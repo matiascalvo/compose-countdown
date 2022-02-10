@@ -1,0 +1,67 @@
+plugins {
+	id 'com.android.application'
+	id 'kotlin-android'
+	id "de.mannodermaus.android-junit5"
+}
+
+android {
+	compileSdk 31
+
+	defaultConfig {
+		applicationId "com.matiascalvo.countdown"
+		minSdk 23
+		targetSdk 31
+		versionCode 1
+		versionName "1.0"
+
+		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+		vectorDrawables {
+			useSupportLibrary true
+		}
+	}
+
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+		}
+	}
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
+	}
+	kotlinOptions {
+		jvmTarget = '1.8'
+		useIR = true
+	}
+	buildFeatures {
+		compose true
+	}
+	composeOptions {
+		kotlinCompilerExtensionVersion libs.versions.compose.get()
+	}
+	packagingOptions {
+		resources {
+			excludes += '/META-INF/{AL2.0,LGPL2.1}'
+		}
+	}
+}
+
+dependencies {
+
+	implementation libs.android.coreKtx
+	implementation libs.android.appCompat
+	implementation libs.android.material
+	implementation libs.bundles.compose
+
+	implementation libs.lifecycle.runtimeKtx
+	implementation libs.lifecycle.livedataKtx
+
+	testImplementation libs.junit5.api
+	testImplementation libs.junit5.params
+	testRuntimeOnly libs.junit5.engine
+
+	androidTestImplementation libs.android.test.junit4
+	androidTestImplementation libs.android.test.espresso
+	androidTestImplementation libs.android.test.compose
+}

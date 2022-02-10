@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Countdown</string>
+    <string name="hours_short">h</string>
+    <string name="minutes_short">m</string>
+    <string name="seconds_short">s</string>
+    <string name="countdown">Countdown</string>
+    <string name="content_start_timer">Start Timer</string>
+    <string name="content_stop_timer">Stop Timer</string>
+</resources>
